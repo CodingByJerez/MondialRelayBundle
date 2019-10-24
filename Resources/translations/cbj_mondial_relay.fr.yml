@@ -1,0 +1,235 @@
+status_code:
+    code_0: Opération effectuée avec succès
+    code_1: Enseigne invalide
+    code_2: Numéro d'enseigne vide ou inexistant
+    code_3: Numéro de compte enseigne invalide
+
+    code_5: Numéro de dossier enseigne invalide
+
+    code_7: Numéro de client enseigne invalide
+    code_8: Mot de passe ou hachage invalide
+    code_9: Ville non reconnu ou non unique
+    code_10: Type de collecte invalide
+    code_11: Numéro de Relais de Collecte invalide
+    code_12: Pays de Relais de collecte invalide
+    code_13: Type de livraison invalide
+    code_14: Numéro de Relais de livraison invalide
+    code_15: Pays de Relais de livraison invalide
+
+    code_20: Poids du colis invalide
+    code_21: Taille (Longueur + Hauteur) du colis invalide
+    code_22: Taille du Colis invalide
+
+    code_24: Numéro d'expédition ou de suivi invalide
+
+    code_26: Temps de montage invalide
+    code_27: Mode de collecte ou de livraison invalide
+    code_28: Mode de collecte invalide
+    code_29: Mode de livraison invalide
+    code_30: Adresse (L1) invalide
+    code_31: Adresse (L2) invalide
+
+    code_33: Adresse (L3) invalide
+    code_34: Adresse (L4) invalide
+    code_35: Ville invalide
+    code_36: Code postal invalide
+    code_37: Pays invalide
+    code_38: Numéro de téléphone invalide
+    code_39: Adresse e-mail invalide
+    code_40: Paramètres manquants
+
+    code_42: Montant CRT invalide
+    code_43: Devise CRT invalide
+    code_44: Valeur du colis invalide
+    code_45: Devise de la valeur du colis invalide
+    code_46: Plage de numéro d'expédition épuisée
+    code_47: Nombre de colis invalide
+    code_48: Multi-Colis Relais Interdit
+    code_49: Action invalide
+
+    code_60: Champ texte libre invalide (Ce code erreur n'est pas invalidant)
+    code_61: Top avisage invalide
+    code_62: Instruction de livraison invalide
+    code_63: Assurance invalide
+    code_64: Temps de montage invalide
+    code_65: Top rendez-vous invalide
+    code_66: Top reprise invalide
+    code_67: Latitude invalide
+    code_68: Longitude invalide
+    code_69: Code Enseigne invalide
+    code_70: Numéro de Point Relais invalide
+    code_71: Nature de point de vente non valide
+
+    code_74: Langue invalide
+
+    code_78: Pays de Collecte invalide
+    code_79: Pays de Livraison invalide
+    code_80: "Code tracing : Colis enregistré"
+    code_81: "Code tracing : Colis en traitement chez Mondial Relay"
+    code_82: "Code tracing : Colis livré"
+    code_83: "Code tracing : Anomalie"
+    code_84: (Réservé Code Tracing)
+    code_85: (Réservé Code Tracing)
+    code_86: (Réservé Code Tracing)
+    code_87: (Réservé Code Tracing)
+    code_88: (Réservé Code Tracing)
+    code_89: (Réservé Code Tracing)
+
+    code_92: Le code pays du destinataire et le code pays du Point Relais doivent être identiques.
+    code_93: "Aucun élément retourné par le plan de tri
+      Si vous effectuez une collecte ou une livraison en Point Relais, vérifiez que les Point
+      Relais sont bien disponibles. Si vous effectuez une livraison à domicile, il est probable
+      que le code postal que vous avez indiquez n'existe pas."
+
+    code_94: Colis Inexistant
+    code_95: Compte Enseigne non activé
+    code_96: Type d'enseigne incorrect en Base
+    code_97: "Clé de sécurité invalide
+      Cf. : § « Génération de la clé de sécurité »"
+    code_98: "Erreur générique (Paramètres invalides)
+      Cette erreur masque une autre erreur de la liste et ne peut se produire que dans le
+      cas où le compte utilisé est en mode « Production ».
+      Cf. : § « Fonctionnement normal et débogage »"
+    code_99: "Erreur générique du service
+      Cette erreur peut être due à un problème technique du service. Veuillez notifier
+      cette erreur à Mondial Relay en précisant la date et l'heure de la requête ainsi que
+      les paramètres envoyés afin d'effectuer une vérification."
+
+validation:
+    adresse:
+        langage:
+            blank: "Vous devez renseigner la langue"
+            language: "La langue doit être au format ISO. ex: FR,ES,EN,DE..."
+        adresse_ligne_1:
+            blank: "Vous devez renseigner la (Civilité Nom Prénom)"
+            length_min: "La (Civilité Nom Prénom) peut contenir au minimum 2 caractères"
+            length_max: "La (Civilité Nom Prénom) peut contenir au maximum 32 caractères"
+        adresse_ligne_2:
+            length_min: "le Complément de La (Civilité Nom Prénom) peut contenir au minimum 2 caractères"
+            length_max: "le Complément de La (Civilité Nom Prénom) peut contenir au maximum 32 caractères"
+        adresse_ligne_3:
+            blank: "Vous devez renseigner l'adresse"
+            length_min: "L'adresse peut contenir au minimum 2 caractères"
+            length_max: "L'adresse peut contenir au maximum 32 caractères"
+        adresse_ligne_4:
+            length_min: "le Complément de L'adresse peut contenir au minimum 2 caractères"
+            length_max: "le Complément de L'adresse peut contenir au maximum 32 caractères"
+        ville:
+            blank: "Vous devez renseigner la ville"
+            length_min: "la ville peut contenir au minimum 2 caractères"
+            length_max: "la ville peut contenir au maximum 26 caractères"
+        cp:
+            blank: "Vous devez renseigner le code postal"
+        pays:
+            blank: "Vous devez renseigner la ville"
+            country: "Le code pays doit etre au format ISO. ex: FR,BE,ES,DE..."
+        tel_1:
+            blank: "Vous devez renseigner la numero de tel "
+        courriel:
+            email: "L'email n'est pas valide"
+
+
+
+
+
+
+
+
+    mode_collecte:
+        blank: "Vous devez renseigner un mode de collecte"
+        choises: "Liste des valeurs valides pour le mode de collecte: CCC|CDR|CDS|REL"
+    mode_livraison:
+        blank: "Vous devez renseigner un mode de livraison"
+        choises: "Liste des valeurs valides pour le mode de livraison: LCC|LD1|LDS|24R|24L|24X|ESP|DRI"
+    numero_dossier:
+        regex: "Le numero de dossier doit être composé uniquement des caractères: [0-9a-zA-Z_ -]"
+        lengthMax: "Le numero de dossier peut contenir au maximum 15 caractères"
+    numero_client:
+        regex: "Le numero de client doit être composé uniquement des caractères: [0-9a-zA-Z_ -]"
+        lengthMax: "Le numero de client peut contenir au maximum 9 caractères"
+
+    poids:
+        blank: "Vous devez renseigner le poids du colis"
+        type: "Le poids du colis doit être en gramme et etre composé uniquement au format numerique"
+        length_min: "Le poids du colis ne peut pas etre inferieur a 100g"
+        length_max: "Le poids du colis ne peut pas etre superieur a 9999999g"
+    longueur:
+        type: "La longueur du colis doit être uniquement au format numerique"
+        length_max: "La longueur du colis ne peut pas etre superieur a 999cm"
+    taille:
+        choice: "Liste des valeurs valides pour la taille du colis: XS|S|M|L|XL|XXL|3XL"
+    nombre_colis:
+        blank: "Vous devez renseigner le nombre de colis"
+        type: "Le nombre de colis doit être composé uniquement au format numerique"
+        length_max: "Le nombre de colis ne peut pas etre superieur a 99 colis"
+    contre_remboursement_montant:
+        blank: "Vous devez renseigner le montant du contre remboursement"
+        type: "le montant du contre remboursement doit être en centimes et ce composer uniquement au format numerique"
+        length_max: "le montant du contre remboursement ne peut pas etre superieur a 9999999 centimes"
+    contre_remboursement_devise:
+        choice: "Liste des valeurs valides pour la devise du contre remboursement: EUR"
+    expedition_valeur:
+        type: "La valeur de expedition doit être en centimes et ce composer uniquement au format numerique"
+        length_max: "La valeur de expedition ne peut pas etre superieur a 9999999 centimes"
+    expedition_devise:
+        choice: "Liste des valeurs valides pour la devise de la valeur de expedition: EUR"
+    collecte_point_relais_pays:
+        expression: "Vous devez renseigner le pays du point relais ou vous allez deposer le colis, car vous avez choisi le mode de collecte: REL"
+        country: "Le code pays du point relais ou vous allez deposer le colis doit etre au format ISO. ex: FR,BE,ES,DE..."
+    collecte_point_relais_id:
+        expression: "Vous devez renseigner l'ID du point relais ou vous allez deposer le colis, car vous avez choisi le mode de collecte: REL"
+        type: "La valeur de ID du point relais où vous allez deposer le colis doit être composée uniquement au format numerique"
+        length_min: "La valeur de ID du point relais où vous allez deposer le colis ne peut pas etre inferieur a 999999"
+        length_max: "La valeur de ID du point relais où vous allez deposer le colis ne peut pas etre superieur a 999999"
+
+
+    livraison_point_relais_pays:
+        expression: "Vous devez renseigner le pays du point relais de livraison, car vous avez choisi le mode de collecte: '24R', '24L', 'DRI'"
+        country: "Le code pays du point relais de livraison doit etre au format ISO. ex: FR,BE,ES,DE..."
+    livraison_point_relais_id:
+        expression: "Vous devez renseigner l'ID du point relais de livraison, car vous avez choisi le mode de collecte: '24R', '24L', 'DRI'"
+        type: "La valeur de ID du point relais de livraison doit être composée uniquement au format numerique"
+        length_min: "La valeur de ID du point de livraison ne peux pas etre inferieur a 999999"
+        length_max: "La valeur de ID du point de livraison ne peux pas etre superieur a 999999"
+    demande_avisage:
+        choice: "Liste des valeurs valide pour la Demande d'avisage: « true » pour « Oui » | « false » pour « Non »"
+    demande_reprise:
+        choice: "Liste des valeurs valide pour la Demande de reprise: « true » pour « Oui » | « false » pour « Non »"
+    temps_montage:
+        type: "Temps de montage Doit être composé uniquement au format numerique"
+        length_max: "La valeur du Temps de montage ne peut pas etre superieur a 999"
+    demande_rendez_vous:
+        choice: "Liste des valeurs valide pour la Demande de rendez-vous: « true » pour « Oui » | « false » pour « Non »"
+    assurance:
+        length_max: "La valeur de l'assurance ne peut pas etre superieur a un caractere"
+    instructions:
+        length_max: "La valeur des instructions ne peut pas etre superieur a 31 caracteres"
+    security:
+        blank: "Vous devez renseigner le montant du contre remboursement"
+        regex: "Le numero de dossier Doit être composé uniquement des caractères: [0-9a-zA-Z_ -]"
+    texte:
+        regex: "Le numero de dossier Doit être composé uniquement des caractères: [0-9a-zA-Z_ -]"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

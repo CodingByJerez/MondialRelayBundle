@@ -1,0 +1,13 @@
+services:
+    CodingByJerez\MondialRelayBundle\Services\SearchShop:
+        arguments:
+            $api_identifiants: '%mondial_relay.api_identifiants%'
+            $validator: '@validator'
+            $translator: "@translator"
+
+    CodingByJerez\MondialRelayBundle\Services\ShipmentCreation:
+        arguments:
+            $api_identifiants: '%mondial_relay.api_identifiants%'
+            $adresse_commerce: '%mondial_relay.adresse_commerce%'
+            $validator: '@validator'
+            $translator: "@translator"

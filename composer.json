@@ -1,0 +1,51 @@
+{
+  "name": "codingbyjerez/mondial-relay",
+  "type": "symfony-bundle",
+  "description": "Bundle for API Mondial Relay",
+  "keywords": [
+    "Mondial Relay"
+  ],
+  "homepage": "http://coding.by.jerez.me",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rodolphe Jerez",
+      "email": "rodolphe@jerez.me"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "symfony/framework-bundle": "^4.2",
+    "symfony/translation": "^4.2",
+    "symfony/twig-bundle": "^4.2",
+    "symfony/validator": "^4.2",
+    "symfony/serializer-pack": "*",
+    "econea/nusoap": "~0.9.5.1"
+  },
+
+  "require-dev": {},
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "CodingByJerez\\MondialRelayBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CodingByJerez\\MondialRelayBundle\\Tests\\": "/Tests/"
+    }
+  },
+  "support": {
+    "docs": ""
+  }
+}
