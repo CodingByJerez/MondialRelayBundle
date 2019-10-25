@@ -15,7 +15,7 @@ _**Note:** [API Mondial Relay](https://www.mondialrelay.fr/media/52521/web-servi
 Documentation
 -------------
 
-_prochainement disponible_
+[Documentation for master](https://github.com/CodingByJerez/MondialRelayBundle/tree/master/Resources/doc/index.rst)
 
 License
 -------

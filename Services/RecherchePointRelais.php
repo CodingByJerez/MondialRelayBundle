@@ -130,7 +130,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @param int $rayon
      * @return RecherchePointRelais
      */
-    public function setRayonRecherche(int $rayon): self
+    public function setOptionRayonRecherche(int $rayon): self
     {
         $this->request->setRayonRecherche($rayon);
 
@@ -142,7 +142,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @return RecherchePointRelais
      * @throws \Exception
      */
-    public function setDelaiEnvoi($jours): self
+    public function setOptionDelaiEnvoi($jours): self
     {
         $this->request->setDelaiEnvoi($jours);
 
@@ -154,7 +154,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @return RecherchePointRelais
      * @throws \Exception
      */
-    public function setAction($modeCollecte): self
+    public function setOptionAction($modeCollecte): self
     {
         $this->request->setAction($modeCollecte);
 
@@ -166,7 +166,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @return RecherchePointRelais
      * @throws \Exception
      */
-    public function setPoids(int $grammes): self
+    public function setOptionPoids(int $grammes): self
     {
         $this->request->setPoids($grammes);
 
@@ -178,7 +178,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @return RecherchePointRelais
      * @throws \Exception
      */
-    public function setTaille(string $taille): self
+    public function setOptionTaille(string $taille): self
     {
         $this->request->setTaille($taille);
 
