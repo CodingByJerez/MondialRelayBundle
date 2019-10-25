@@ -12,6 +12,7 @@ namespace CodingByJerez\MondialRelayBundle\Services;
 
 
 use CodingByJerez\MondialRelayBundle\Exception\AdresseException;
+use CodingByJerez\MondialRelayBundle\Exception\CreationEtiquetteException;
 use CodingByJerez\MondialRelayBundle\Model\Parcel\AdresseModel;
 use CodingByJerez\MondialRelayBundle\Model\Parcel\EtiquetteModel;
 
@@ -26,7 +27,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class ShipmentCreation
  * @package CodingByJerez\MondialRelayBundle\Services
  */
-class ShipmentCreation extends AbstractMondialRelay
+class CreationEtiquette extends AbstractMondialRelay
 {
 
     private const METHOD = "WSI2_CreationEtiquette";
@@ -90,7 +91,7 @@ class ShipmentCreation extends AbstractMondialRelay
                 ->setExpediteurTel2($adresse->getTel2() ?? null)
                 ->setExpediteurCourriel($adresse->getCourriel() ?? null)
             ;
-        }else throw (new AdresseException("error Adresse Expediteur"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Adresse Expediteur: "));
+        }else throw (new AdresseException("error Parcel Adresse Expediteur"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Parcel Adresse Expediteur: "));
 
         return $this;
     }
@@ -116,7 +117,7 @@ class ShipmentCreation extends AbstractMondialRelay
                 ->setDestinataireTel2($adresse->getTel2() ?? null)
                 ->setDestinataireCourriel($adresse->getCourriel() ?? null)
             ;
-        }else throw (new AdresseException("error Adresse Destinataire"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Adresse Destinataire: "));
+        }else throw (new AdresseException("error Parcel Adresse Destinataire"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Parcel Adresse Destinataire: "));
 
         return $this;
     }
@@ -128,7 +129,7 @@ class ShipmentCreation extends AbstractMondialRelay
      * @param int $poids
      * @param int $nombreColis
      * @param int $contreRemboursementMontant
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function initEtiquette(
         string $modeCollecte,
@@ -159,7 +160,7 @@ class ShipmentCreation extends AbstractMondialRelay
     {
 
         if(count($errors = $this->validator->validate($this->request)) > 0)
-            throw (new AdresseException("Error Creation Shipment"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Creation Shipment: "));
+            throw (new CreationEtiquetteException("Error Parcel Creation Etiquette"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Parcel Creation Etiquette: "));
 
         $parameterArray = $this->serializer($this->request);
 
@@ -174,7 +175,7 @@ class ShipmentCreation extends AbstractMondialRelay
     /**
      * @param int $collectePointRelaisID
      * @param string $collectePointRelaisPays
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setCollectePointRelais(int $collectePointRelaisID, string $collectePointRelaisPays = "XX"): self
     {
@@ -189,7 +190,7 @@ class ShipmentCreation extends AbstractMondialRelay
     /**
      * @param int $livraisonPointRelaisID
      * @param string $livraisonPointRelaisPays
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setLivraisonPointRelais(int $livraisonPointRelaisID, string $livraisonPointRelaisPays): self
     {
@@ -204,7 +205,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $numeroDossier
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionNumeroDossier(string $numeroDossier): self
     {
@@ -215,7 +216,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $numeroClient
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionNumeroClient(string $numeroClient): self
     {
@@ -226,7 +227,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param int $longueur
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionLongueur(int $longueur): self
     {
@@ -237,7 +238,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $taille
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionTaille(string $taille): self
     {
@@ -248,7 +249,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $contreRemboursementDevise
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionContreRemboursementDevise(string $contreRemboursementDevise): self
     {
@@ -259,7 +260,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param int $expeditionValeur
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionExpeditionValeur(int $expeditionValeur): self
     {
@@ -270,7 +271,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $expeditionDevise
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionExpeditionDevise(string $expeditionDevise): self
     {
@@ -281,7 +282,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param bool $demandeAvisage
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionDemandeAvisage(bool $demandeAvisage): self
     {
@@ -292,7 +293,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param bool $demandeReprise
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionDemandeReprise(bool $demandeReprise): self
     {
@@ -303,7 +304,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param int $tempsMontage
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionTempsMontage(int $tempsMontage): self
     {
@@ -314,7 +315,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param bool $demandeRendezVous
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionDemandeRendezVous(bool $demandeRendezVous): self
     {
@@ -325,7 +326,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $assurance
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionAssurance(string $assurance): self
     {
@@ -336,7 +337,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $instructions
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionInstructions(string $instructions): self
     {
@@ -347,7 +348,7 @@ class ShipmentCreation extends AbstractMondialRelay
 
     /**
      * @param string $texte
-     * @return ShipmentCreation
+     * @return CreationEtiquette
      */
     public function setOptionTexte(string $texte): self
     {

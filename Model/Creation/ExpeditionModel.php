@@ -355,12 +355,7 @@ class ExpeditionModel
      */
     private $instructions;
 
-    /**
-     * @var null|string
-     *
-     * @SerializedName("Texte")
-     */
-    private $texte;
+
 
     /**
      * @return string
@@ -1171,28 +1166,6 @@ class ExpeditionModel
         $this->instructions = $instructions;
         return $this;
     }
-
-
-    /**
-     * @return null|string
-     */
-    public function getTexte(): ?string
-    {
-        return $this->texte;
-    }
-
-    /**
-     * @param null|string $texte
-     * @return ExpeditionModel
-     */
-    public function setTexte(?string $texte): self
-    {
-        $this->texte = $texte;
-        return $this;
-    }
-
-
-
 
 
 

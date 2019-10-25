@@ -10,15 +10,14 @@
 
 namespace CodingByJerez\MondialRelayBundle\Services;
 
-
-use CodingByJerez\MondialRelayBundle\Exception\AdresseException;
+use CodingByJerez\MondialRelayBundle\Exception\RecherchePointRelaisException;
 use CodingByJerez\MondialRelayBundle\Model\Creation\RecherchePointRelaisModel;
 
 use CodingByJerez\MondialRelayBundle\Model\Parcel\PointRelaisModel;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class SearchShop extends AbstractMondialRelay
+class RecherchePointRelais extends AbstractMondialRelay
 {
 
     private const METHOD = "WSI4_PointRelais_Recherche";
@@ -51,7 +50,7 @@ class SearchShop extends AbstractMondialRelay
      * @param string $codePostal
      * @param null|string $ville
      * @param int $nombreResultats
-     * @return SearchShop
+     * @return RecherchePointRelais
      */
     public function rechercheByAdresse(string $pays, string $codePostal, string $ville = null, int $nombreResultats = 10): self
     {
@@ -69,7 +68,7 @@ class SearchShop extends AbstractMondialRelay
      * @param float $latitude
      * @param float $longitude
      * @param int $nombreResultats
-     * @return SearchShop
+     * @return RecherchePointRelais
      */
     public function rechercheByLatLong(float $latitude, float $longitude, int $nombreResultats = 10): self
     {
@@ -86,7 +85,7 @@ class SearchShop extends AbstractMondialRelay
      * @param string $pays
      * @param int $idShop
      * @param int $nombreResultats
-     * @return SearchShop
+     * @return RecherchePointRelais
      */
     public function rechercheById(string $pays, int $idShop, int $nombreResultats = 10): self
     {
@@ -99,93 +98,15 @@ class SearchShop extends AbstractMondialRelay
         return $this;
     }
 
-
-    /* ---------------
-     *    OPTION
-     * --------------- */
-
-    /**
-     * @param int $rayon
-     * @return SearchShop
-     */
-    public function setRayonRecherche(int $rayon): self
-    {
-        $this->request->setRayonRecherche($rayon);
-
-        return $this;
-    }
-
-    /**
-     * @param $jours
-     * @return SearchShop
-     * @throws \Exception
-     */
-    public function setDelaiEnvoi($jours): self
-    {
-
-        if(!preg_match("^-?([0-9]{2})$", $jours))
-            throw new \Exception("Le format du delai d'envoi est incorect il doit etre au format numerique ^-?([0-9]{2})$");
-
-        $this->request->setDelaiEnvoi($jours);
-
-        return $this;
-    }
-
-    /**
-     * @param $modeCollecte
-     * @return SearchShop
-     * @throws \Exception
-     */
-    public function setAction($modeCollecte): self
-    {
-        if(in_array($modeCollecte, ["REL", "24R", "24L", "24X", "DRI"]))
-            throw new \Exception("Le Mode de collecte ou de livraison est incorect. Liste de valeur: (REL|24R|24L|24X|DRI)");
-
-        $this->request->setAction($modeCollecte);
-
-        return $this;
-    }
-
-    /**
-     * @param int $grammes
-     * @return SearchShop
-     * @throws \Exception
-     */
-    public function setPoids(int $grammes): self
-    {
-        if(!preg_match("^[0-9]{1,6}$", $grammes))
-            throw new \Exception("Le format du poids du colis est incorect il doit etre au format numerique ^[0-9]{1,6}$");
-
-        $this->request->setPoids($grammes);
-
-        return $this;
-    }
-
-    /**
-     * @param string $taille
-     * @return SearchShop
-     * @throws \Exception
-     */
-    public function setTaille(string $taille): self
-    {
-        if(in_array($taille, ["XS", "S", "M", "L", "XL", "XXL", "3XL"]))
-            throw new \Exception("Le format de la taille du colis est incorect. Liste de valeur: (XS|S|M|L|XL|XXL|3XL)");
-
-        $this->request->setTaille($taille);
-
-        return $this;
-    }
-
-
     /**
      * @return array
      * @throws \CodingByJerez\MondialRelayBundle\Exception\AbstractValidatorException
      */
-    public function rechercheShops(): array
+    public function getPoinRelais(): array
     {
 
         if(count($errors = $this->validator->validate($this->request)) > 0)
-            throw (new AdresseException("Error Creation Shipment"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Creation Shipment: "));
+            throw (new RecherchePointRelaisException("Error Creation Parcel RecherchePointRelais"))->setErrorValidator($this->createErrorValidationArray($errors, "Error Recherche Point Relais: "));
 
         $parameterArray = $this->serializer($this->request);
 
@@ -200,5 +121,69 @@ class SearchShop extends AbstractMondialRelay
 
         return $this->parcelShopArray;
     }
+
+    /* ---------------
+    *    OPTION
+    * --------------- */
+
+    /**
+     * @param int $rayon
+     * @return RecherchePointRelais
+     */
+    public function setRayonRecherche(int $rayon): self
+    {
+        $this->request->setRayonRecherche($rayon);
+
+        return $this;
+    }
+
+    /**
+     * @param $jours
+     * @return RecherchePointRelais
+     * @throws \Exception
+     */
+    public function setDelaiEnvoi($jours): self
+    {
+        $this->request->setDelaiEnvoi($jours);
+
+        return $this;
+    }
+
+    /**
+     * @param $modeCollecte
+     * @return RecherchePointRelais
+     * @throws \Exception
+     */
+    public function setAction($modeCollecte): self
+    {
+        $this->request->setAction($modeCollecte);
+
+        return $this;
+    }
+
+    /**
+     * @param int $grammes
+     * @return RecherchePointRelais
+     * @throws \Exception
+     */
+    public function setPoids(int $grammes): self
+    {
+        $this->request->setPoids($grammes);
+
+        return $this;
+    }
+
+    /**
+     * @param string $taille
+     * @return RecherchePointRelais
+     * @throws \Exception
+     */
+    public function setTaille(string $taille): self
+    {
+        $this->request->setTaille($taille);
+
+        return $this;
+    }
+
 
 }

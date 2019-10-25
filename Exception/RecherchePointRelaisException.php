@@ -4,11 +4,11 @@
  * User: CodingByJerez
  * Url: http://coding.by.jerez.me
  * Github: https://github.com/CodingByJerez
- * Date: 24/10/2019
- * Time: 11:02
+ * Date: 25/10/2019
+ * Time: 10:49
  */
 
 namespace CodingByJerez\MondialRelayBundle\Exception;
 
 
-class ShipmentException extends AbstractValidatorException { }
+class RecherchePointRelaisException extends AbstractValidatorException { }

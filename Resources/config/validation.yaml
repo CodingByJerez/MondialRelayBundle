@@ -1,3 +1,76 @@
+CodingByJerez\MondialRelayBundle\Model\RecherchePointRelaisModel:
+    properties:
+        paysCode:
+            - NotBlank:
+                message: validation.recherche_point_relais.pays_code.blank
+            - Country:
+                message: validation.recherche_point_relais.pays_code.country
+        numPointRelais:
+            - Type:
+                type: integer
+                message: validation.recherche_point_relais.num_point_relais.type
+            - Length:
+                max: 6
+                maxMessage: validation.recherche_point_relais.num_point_relais.length_max
+        ville:
+            - Type:
+                type: string
+            - Length:
+                min: 2
+                max: 25
+                minMessage: validation.recherche_point_relais.ville.length_min
+                maxMessage: validation.recherche_point_relais.ville.length_max
+        codePostal:
+            - Type:
+                type: string
+        latitude:
+            - Type:
+                type: float
+            - Expression:
+                expression: "value and this.getLongitude()"
+                message: validation.recherche_point_relais.latitude.expression
+        longitude:
+            - Type:
+                type: float
+            - Expression:
+                expression: "value and this.getLatitude()"
+                message: validation.recherche_point_relais.longitude.expression
+        taille:
+            - Choice:
+                choices: [XS, S, M, L, XL, XXL, 3XL]
+                message: validation.recherche_point_relais.taille.choises
+        poids:
+            - Type:
+                type: integer
+                message: validation.recherche_point_relais.poids.type
+            - Length:
+                max: 6
+                maxMessage: validation.recherche_point_relais.poids.length_max
+        action:
+           - Choice:
+                choices: [REL, 24R, 24L, 24X, DRI]
+                message: validation.recherche_point_relais.action.choises
+        delaiEnvoi:
+            - Type:
+                type: integer
+                message: validation.recherche_point_relais.delai_envoi.type
+            - Length:
+                max: 2
+                maxMessage: validation.recherche_point_relais.delai_envoi.length_max
+        rayonRecherche:
+            - Type:
+                type: integer
+                message: validation.recherche_point_relais.rayon_recherche.type
+            - Length:
+                max: 4
+                maxMessage: validation.recherche_point_relais.rayon_recherche.length_max
+        typeActivite:
+            - Regex:
+                pattern: '/^(\d{3},|\d{3})*$/'
+                match:   false
+                message: validation.recherche_point_relais.type_activite.regex
+
+
 CodingByJerez\MondialRelayBundle\Model\AdressetModel:
     properties:
         langage:
@@ -79,165 +152,158 @@ CodingByJerez\MondialRelayBundle\Model\Creation\ExpeditionModel:
     properties:
         modeCollecte:
             - NotBlank:
-                message: validation.mode_collecte.blank
+                message: validation.expedition.mode_collecte.blank
             - Choice:
                 choices: [CCC, CDR, CDS, REL]
-                message: validation.mode_collecte.choises
+                message: validation.expedition.mode_collecte.choises
         modeLivraison:
             - NotBlank:
-                message: validation.mode_livraison.blank
+                message: validation.expedition.mode_livraison.blank
             - Choice:
                 choices: [LCC, LD1, LDS, 24R, 24L, 24X, ESP, DRI]
-                message: validation.mode_livraison.choises
+                message: validation.expedition.mode_livraison.choises
         numeroDossier:
             - Regex:
                 pattern: '/^[0-9a-zA-Z_ -]+$/'
                 match:   false
-                message: validation.numero_dossier.regex
+                message: validation.expedition.numero_dossier.regex
             - Length:
                 max: 15
-                maxMessage: validation.numero_dossier.lengthMax
+                maxMessage: validation.expedition.numero_dossier.lengthMax
         numeroClient:
             - Regex:
                 pattern: '/^[0-9a-zA-Z_ -]+$/'
                 match:   false
-                message: validation.numero_client.regex
+                message: validation.expedition.numero_client.regex
             - Length:
                 max: 9
-                maxMessage: validation.numero_client.lengthMax
-
-
-
-
-
-
-
-
-
+                maxMessage: validation.expedition.numero_client.lengthMax
         poids:
             - NotBlank:
-                message: validation.poids.blank
+                message: validation.expedition.poids.blank
             - Type:
                 type: integer
-                message: validation.poids.type
+                message: validation.expedition.poids.type
             - Length:
                 min: 3
                 max: 7
-                minMessage: validation.poids.length_min
-                maxMessage: validation.poids.length_max
+                minMessage: validation.expedition.poids.length_min
+                maxMessage: validation.expedition.poids.length_max
         longueur:
             - Type:
                 type: integer
-                message: validation.longueur.type
+                message: validation.expedition.longueur.type
             - Length:
                 max: 3
-                maxMessage: validation.longueur.length_max
+                maxMessage: validation.expedition.longueur.length_max
         taille:
             - Choice:
                 choices: [XS, S, M, L, XL, XXL, 3XL]
-                message: validation.taille.choice
+                message: validation.expedition.taille.choice
         nombreColis:
             - NotBlank:
-                message: validation.nombre_colis.blank
+                message: validation.expedition.nombre_colis.blank
             - Type:
                 type: integer
-                message: validation.nombre_colis.type
+                message: validation.expedition.nombre_colis.type
             - Length:
                 max: 2
-                maxMessage: validation.nombre_colis.length_max
+                maxMessage: validation.expedition.nombre_colis.length_max
         contreRemboursementMontant:
             - NotBlank:
-                message: validation.contre_remboursement_montant.blank
+                message: validation.expedition.contre_remboursement_montant.blank
             - Type:
                 type: integer
-                message: validation.contre_remboursement_montant.type
+                message: validation.expedition.contre_remboursement_montant.type
             - Length:
                 max: 7
-                maxMessage: validation.contre_remboursement_montant.length_max
+                maxMessage: validation.expedition.contre_remboursement_montant.length_max
         contreRemboursementDevise:
             - Choice:
                 choices: [EUR]
-                message: validation.contre_remboursement_devise.choice
+                message: validation.expedition.contre_remboursement_devise.choice
         expeditionValeur:
             - Type:
                 type: integer
-                message: validation.expedition_valeur.type
+                message: validation.expedition.expedition_valeur.type
             - Length:
                 max: 7
-                maxMessage: validation.expedition_valeur.length_max
+                maxMessage: validation.expedition.expedition_valeur.length_max
         expeditionDevise:
             - Choice:
                 choices: [EUR]
-                message: validation.expedition_devise.choice
+                message: validation.expedition.expedition_devise.choice
 
         collectePointRelaisPays:
             - Expression:
                 expression: "!(this.getModeCollecte() in ['REL'] and !value)"
-                message: validation.collecte_point_relais_pays.expression
+                message: validation.expedition.collecte_point_relais_pays.expression
             - Country:
-                message: validation.collecte_point_relais_pays.country
+                message: validation.expedition.collecte_point_relais_pays.country
         collectePointRelaisID:
             - Expression:
                 expression: "!(this.getModeCollecte() in ['REL'] and !value)"
-                message: validation.collecte_point_relais_id.expression
+                message: validation.expedition.collecte_point_relais_id.expression
             - Type:
                 type: integer
-                message: validation.collecte_point_relais_id.type
+                message: validation.expedition.collecte_point_relais_id.type
             - Length:
              #   min: 6
                 max: 6
              #   minMessage: validation.collecte_point_relais_id.length_min
-                maxMessage: validation.collecte_point_relais_id.length_max
+                maxMessage: validation.expedition.collecte_point_relais_id.length_max
         livraisonPointRelaisPays:
             - Expression:
                 expression: "!(this.getModeLivraison() in ['24R', '24L', 'DRI'] and !value)"
-                message: validation.livraison_point_relais_pays.expression
+                message: validation.expedition.livraison_point_relais_pays.expression
             - Country:
-                message: validation.livraison_point_relais_pays.country
+                message: validation.expedition.livraison_point_relais_pays.country
         livraisonPointRelaisID:
             - Expression:
                 expression: "!(this.getModeLivraison() in ['24R', '24L', 'DRI'] and !value)"
-                message: validation.livraison_point_relais_id.expression
+                message: validation.expedition.livraison_point_relais_id.expression
             - Type:
                 type: integer
-                message: validation.livraison_point_relais_id.type
+                message: validation.expedition.livraison_point_relais_id.type
             - Length:
                 #min: 6
                 max: 6
                # minMessage: validation.livraison_point_relais_id.length_min
-                maxMessage: validation.livraison_point_relais_id.length_max
+                maxMessage: validation.expedition.livraison_point_relais_id.length_max
         demandeAvisage:
             - Choice:
                 choices: [O, N]
-                message: validation.demande_avisage.choice
+                message: validation.expedition.demande_avisage.choice
         demandeReprise:
             - Choice:
                 choices: [O, N]
-                message: validation.demande_reprise.choice
+                message: validation.expedition.demande_reprise.choice
         tempsMontage:
             - Type:
                 type: integer
-                message: validation.temps_montage.type
+                message: validation.expedition.temps_montage.type
             - Length:
                 max: 3
-                maxMessage: validation.temps_montage.length_max
+                maxMessage: validation.expedition.temps_montage.length_max
         demandeRendezVous:
             - Choice:
                 choices: [O, N]
-                message: validation.demande_rendez_vous.choice
+                message: validation.expedition.demande_rendez_vous.choice
         assurance:
             - Length:
                 max: 1
-                maxMessage: validation.assurance.length_max
+                maxMessage: validation.expedition.assurance.length_max
         instructions:
             - Type:
                 type: String
             - Length:
                 max: 31
-                maxMessage: validation.instructions.length_max
+                maxMessage: validation.expedition.instructions.length_max
 
+
+CodingByJerez\MondialRelayBundle\Model\Creation\EtiquetteModel:
         texte:
-            - Regex:
+           - Regex:
                 pattern: '/^([^<>&]{3,30})(\(cr\)[^<>&]{0,30}){0,9}$/'
                 match:   false
-                message: "Max 15 caractères regex: ^(|[0-9A-Z_ -]{0,15})$"
+                message: etiquette.text.regex

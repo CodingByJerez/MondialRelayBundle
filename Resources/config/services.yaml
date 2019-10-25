@@ -1,11 +1,11 @@
 services:
-    CodingByJerez\MondialRelayBundle\Services\SearchShop:
+    CodingByJerez\MondialRelayBundle\Services\RecherchePointRelais:
         arguments:
             $api_identifiants: '%mondial_relay.api_identifiants%'
             $validator: '@validator'
             $translator: "@translator"
 
-    CodingByJerez\MondialRelayBundle\Services\ShipmentCreation:
+    CodingByJerez\MondialRelayBundle\Services\CreationEtiquette:
         arguments:
             $api_identifiants: '%mondial_relay.api_identifiants%'
             $adresse_commerce: '%mondial_relay.adresse_commerce%'
