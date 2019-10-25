@@ -59,11 +59,11 @@ si le fichier n'existe pas créé est le.
     # config/packages/mondial_relay.yaml
     mondial_relay:
         api_identifiants:
-            customer_code: ~ #Obligatoire
-            brand_id: ~ #Obligatoire
-            secret_key: ~ #Obligatoire
-            user: ~ #Obligatoire
-            password: ~ #Obligatoire
+            customer_code:        ~ #Obligatoire
+            brand_id:             ~ #Obligatoire
+            secret_key:           ~ #Obligatoire
+            user:                 ~ #Obligatoire
+            password:             ~ #Obligatoire
         adresse_commerce:
             identite:             ~ #Obligatoire
             identite_complement:  ~
@@ -101,18 +101,18 @@ a) Recherche un point relais par adresse
         try{
 
             // Obligatoire
-            $recherche->rechercheByAdresse("FR", "60000");
+            $recherche->rechercheByAdresse("FR", "60000", null, 10); #<code_pays>, <code_postal>, <ville (otionel)>, <nombre de résultat (otionel)>
 
             // OPTION
             $recherche
-                ->setOptionRayonRecherche() #^[0-9]{1,4}$ (en KM)
-                ->setOptionDelaiEnvoi() #^-?[0-9]{2})$
-                ->setOptionAction() #^(REL|24R|24L|24X|DRI)$
+                ->setOptionRayonRecherche(40) #^[0-9]{1,4}$ (en KM)
+                ->setOptionDelaiEnvoi(2) #^-?[0-9]{2})$
+                ->setOptionAction("REL") #^(REL|24R|24L|24X|DRI)$
                 ->setOptionPoids(100) #^[0-9]{1,6}$ (en grammes)
                 ->setOptionTaille("L") #^(XS|S|M|L|XL|XXL|3XL)$
 
             // Obligatoire
-            $result = $recherche->rechercheByAdresse("FR", "60000")->getPoinRelais();
+            $result = $recherche->getPoinRelais();
 
         }catch (RecherchePointRelaisException $e){
             echo $e->getMessage();
@@ -138,7 +138,20 @@ b) Recherche un point relais par coordonnées géographique
     {
         try{
 
-            $result = $recherche->rechercheByLatLong(48.8534, 2.3488)->getPoinRelais();
+             // Obligatoire
+            $recherche->rechercheByLatLong(48.8534, 2.3488, 10); #<lat>, <long>, <nombre de résultat (otionel)>
+
+            // OPTION
+            $recherche
+                ->setOptionRayonRecherche(40) #^[0-9]{1,4}$ (en KM)
+                ->setOptionDelaiEnvoi(2) #^-?[0-9]{2})$
+                ->setOptionAction("REL") #^(REL|24R|24L|24X|DRI)$
+                ->setOptionPoids(100) #^[0-9]{1,6}$ (en grammes)
+                ->setOptionTaille("L") #^(XS|S|M|L|XL|XXL|3XL)$
+
+            // Obligatoire
+            $result = $recherche->getPoinRelais();
+
 
         }catch (RecherchePointRelaisException $e){
             echo $e->getMessage();
@@ -166,9 +179,8 @@ c) Recherche un point relais par son ID
         try{
 
             $result = $recherche
-            ->rechercheById("FR", 2678)
-
-            ->getPoinRelais();
+                        ->rechercheById("FR", 2678) #<code_pays>, <id point relais>
+                        ->getPoinRelais();
 
         }catch (RecherchePointRelaisException $e){
             echo $e->getMessage();
@@ -179,7 +191,6 @@ c) Recherche un point relais par son ID
 
     }
 
-.. Option::
 
 
 
@@ -187,8 +198,75 @@ c) Recherche un point relais par son ID
 Creation une etiquette:
 ~~~~~~~~~~~~~~~~~~~~~~~
 
+.. code-block:: php
 
-Creation d'une Expedition:
+    <?php
+    // App\Controller\ExempleController.php
+
+    // use CodingByJerez\MondialRelayBundle\Model\Parcel\AdresseModel;
+
+
+    public function rechercheAction(CreationEtiquette $etiquette)
+    {
+        $adresse = new AdresseModel();
+        $adresse
+            ->setIdentite("Robin Mince")
+            ->setIdentiteComplement("Résidence des champs")
+            ->setAdresse("18 rue basse")
+            ->setCodePostal("75001")
+            ->setVille("Paris")
+            ->setPaysCode("FR")
+            ->setTel("+33300000000")
+            ->setCourriel("client@yopmail.com")
+            ->setLangage("FR")
+        ;
+
+        try{
+
+            // Obligatoire
+            $etiquette->initEtiquette("CCC", "24R", $adresse, 1000, 1, 0) #<mode de collecte>, <mode livraison>, <AdresseModel>, <poids (gr)>, <nombre de colis>, <contreRemboursementMontant>
+
+            // Obligatoire si Collecte Point Relais (CCC)
+                ->setCollectePointRelais("066974", "FR") #<id point relais> <code pays>
+
+            // Obligatoire si Livraison Relais
+                ->setLivraisonPointRelais(66974, "FR")
+
+            // Option
+            $etiquette
+                ->setOptionNumeroDossier(<arg>)
+                ->setOptionNumeroClient(<arg>)
+                ->setOptionLongueur(<arg>)
+                ->setOptionTaille(<arg>)
+                ->setOptionContreRemboursementDevise(<arg>)
+                ->setOptionExpeditionValeur(<arg>)
+                ->setOptionExpeditionDevise(<arg>)
+                ->setOptionDemandeAvisage(<arg>)
+                ->setOptionDemandeReprise(<arg>)
+                ->setOptionTempsMontage(<arg>)
+                ->setOptionDemandeRendezVous(<arg>)
+                ->setOptionAssurance(<arg>)
+                ->setOptionInstructions(<arg>)
+                ->setOptionTexte(<arg>)
+
+            // Obligatoire
+            $result = $etiquette->createEtiquette();
+
+        }catch (AdresseException $e){
+            echo $e->getMessage();
+            foreach ($e->getErrorValidator() as $valueText)
+                echo $valueText;
+        }catch (CreationEtiquetteException $e){
+            echo $e->getMessage();
+            foreach ($e->getErrorValidator() as $valueText)
+                echo $valueText;
+        }
+
+
+    }
+
+
+Creation d'une expedition:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 prochainement
