@@ -150,8 +150,8 @@ b) Recherche un point relais par coordonnées géographique
     }
 
 
-c) Recherche un point relais par adresse
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+c) Recherche un point relais par son ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: php
 
