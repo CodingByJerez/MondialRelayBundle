@@ -203,6 +203,7 @@ Creation une etiquette:
     <?php
     // App\Controller\ExempleController.php
 
+    // use CodingByJerez\MondialRelayBundle\Services\CreationEtiquette
     // use CodingByJerez\MondialRelayBundle\Model\Parcel\AdresseModel;
 
 
