@@ -17,7 +17,7 @@ use CodingByJerez\MondialRelayBundle\Model\Parcel\PointRelaisModel;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class RecherchePointRelais extends AbstractMondialRelay
+class CBJRecherchePointRelais extends AbstractMondialRelay
 {
 
     private const METHOD = "WSI4_PointRelais_Recherche";
@@ -50,7 +50,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @param string $codePostal
      * @param null|string $ville
      * @param int $nombreResultats
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      */
     public function rechercheByAdresse(string $pays, string $codePostal, string $ville = null, int $nombreResultats = 10): self
     {
@@ -68,7 +68,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @param float $latitude
      * @param float $longitude
      * @param int $nombreResultats
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      */
     public function rechercheByLatLong(float $latitude, float $longitude, int $nombreResultats = 10): self
     {
@@ -85,7 +85,7 @@ class RecherchePointRelais extends AbstractMondialRelay
      * @param string $pays
      * @param int $idShop
      * @param int $nombreResultats
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      */
     public function rechercheById(string $pays, int $idShop, int $nombreResultats = 10): self
     {
@@ -128,7 +128,7 @@ class RecherchePointRelais extends AbstractMondialRelay
 
     /**
      * @param int $rayon
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      */
     public function setOptionRayonRecherche(int $rayon): self
     {
@@ -139,7 +139,7 @@ class RecherchePointRelais extends AbstractMondialRelay
 
     /**
      * @param $jours
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      * @throws \Exception
      */
     public function setOptionDelaiEnvoi($jours): self
@@ -151,7 +151,7 @@ class RecherchePointRelais extends AbstractMondialRelay
 
     /**
      * @param $modeCollecte
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      * @throws \Exception
      */
     public function setOptionAction($modeCollecte): self
@@ -163,7 +163,7 @@ class RecherchePointRelais extends AbstractMondialRelay
 
     /**
      * @param int $grammes
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      * @throws \Exception
      */
     public function setOptionPoids(int $grammes): self
@@ -175,7 +175,7 @@ class RecherchePointRelais extends AbstractMondialRelay
 
     /**
      * @param string $taille
-     * @return RecherchePointRelais
+     * @return CBJRecherchePointRelais
      * @throws \Exception
      */
     public function setOptionTaille(string $taille): self

@@ -27,7 +27,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class ShipmentCreation
  * @package CodingByJerez\MondialRelayBundle\Services
  */
-class CreationEtiquette extends AbstractMondialRelay
+class CBJCreationEtiquette extends AbstractMondialRelay
 {
 
     private const METHOD = "WSI2_CreationEtiquette";
@@ -129,7 +129,7 @@ class CreationEtiquette extends AbstractMondialRelay
      * @param int $poids
      * @param int $nombreColis
      * @param int $contreRemboursementMontant
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function initEtiquette(
         string $modeCollecte,
@@ -175,7 +175,7 @@ class CreationEtiquette extends AbstractMondialRelay
     /**
      * @param int $collectePointRelaisID
      * @param string $collectePointRelaisPays
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setCollectePointRelais(int $collectePointRelaisID, string $collectePointRelaisPays = "XX"): self
     {
@@ -190,7 +190,7 @@ class CreationEtiquette extends AbstractMondialRelay
     /**
      * @param int $livraisonPointRelaisID
      * @param string $livraisonPointRelaisPays
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setLivraisonPointRelais(int $livraisonPointRelaisID, string $livraisonPointRelaisPays): self
     {
@@ -205,7 +205,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $numeroDossier
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionNumeroDossier(string $numeroDossier): self
     {
@@ -216,7 +216,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $numeroClient
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionNumeroClient(string $numeroClient): self
     {
@@ -227,7 +227,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param int $longueur
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionLongueur(int $longueur): self
     {
@@ -238,7 +238,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $taille
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionTaille(string $taille): self
     {
@@ -249,7 +249,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $contreRemboursementDevise
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionContreRemboursementDevise(string $contreRemboursementDevise): self
     {
@@ -260,7 +260,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param int $expeditionValeur
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionExpeditionValeur(int $expeditionValeur): self
     {
@@ -271,7 +271,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $expeditionDevise
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionExpeditionDevise(string $expeditionDevise): self
     {
@@ -282,7 +282,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param bool $demandeAvisage
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionDemandeAvisage(bool $demandeAvisage): self
     {
@@ -293,7 +293,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param bool $demandeReprise
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionDemandeReprise(bool $demandeReprise): self
     {
@@ -304,7 +304,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param int $tempsMontage
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionTempsMontage(int $tempsMontage): self
     {
@@ -315,7 +315,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param bool $demandeRendezVous
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionDemandeRendezVous(bool $demandeRendezVous): self
     {
@@ -326,7 +326,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $assurance
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionAssurance(string $assurance): self
     {
@@ -337,7 +337,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $instructions
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionInstructions(string $instructions): self
     {
@@ -348,7 +348,7 @@ class CreationEtiquette extends AbstractMondialRelay
 
     /**
      * @param string $texte
-     * @return CreationEtiquette
+     * @return CBJCreationEtiquette
      */
     public function setOptionTexte(string $texte): self
     {

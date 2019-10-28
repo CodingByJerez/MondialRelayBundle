@@ -93,10 +93,10 @@ a) Recherche un point relais par adresse
     <?php
     // App\Controller\ExempleController.php
 
-    // use CodingByJerez\MondialRelayBundle\Services\RecherchePointRelais;
+    // use CodingByJerez\MondialRelayBundle\Services\CBJRecherchePointRelais;
 
 
-    public function rechercheAction(RecherchePointRelais $recherche)
+    public function rechercheAction(CBJRecherchePointRelais $recherche)
     {
         try{
 
@@ -131,10 +131,10 @@ b) Recherche un point relais par coordonnées géographique
     <?php
     // App\Controller\ExempleController.php
 
-    // use CodingByJerez\MondialRelayBundle\Services\RecherchePointRelais;
+    // use CodingByJerez\MondialRelayBundle\Services\CBJRecherchePointRelais;
 
 
-    public function rechercheAction(RecherchePointRelais $recherche)
+    public function rechercheAction(CBJRecherchePointRelais $recherche)
     {
         try{
 
@@ -171,10 +171,10 @@ c) Recherche un point relais par son ID
     <?php
     // App\Controller\ExempleController.php
 
-    // use CodingByJerez\MondialRelayBundle\Services\RecherchePointRelais;
+    // use CodingByJerez\MondialRelayBundle\Services\CBJRecherchePointRelais;
 
 
-    public function rechercheAction(RecherchePointRelais $recherche)
+    public function rechercheAction(CBJRecherchePointRelais $recherche)
     {
         try{
 
@@ -203,11 +203,11 @@ Creation une etiquette:
     <?php
     // App\Controller\ExempleController.php
 
-    // use CodingByJerez\MondialRelayBundle\Services\CreationEtiquette
+    // use CodingByJerez\MondialRelayBundle\Services\CBJCreationEtiquette
     // use CodingByJerez\MondialRelayBundle\Model\Parcel\AdresseModel;
 
 
-    public function rechercheAction(CreationEtiquette $etiquette)
+    public function rechercheAction(CBJCreationEtiquette $etiquette)
     {
         $adresse = new AdresseModel();
         $adresse
